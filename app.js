@@ -1,6 +1,8 @@
+const express = require ('express')
+const app = express ()
 const fs = require ('fs');
-
-
+const path = require ('path')
+const PORT = 8080
 class Contenedor {
 
     constructor(file) {
@@ -81,7 +83,21 @@ class Contenedor {
 
 let contenedor = new Contenedor("productos.json")
 
-//Ejemplo para verificar
+app.get('/',(req, res) => {
+    
+    res.send('<h1>Desafío 3</h1>')
+})
+app.get('/visitas',(req, res) => {
+    res.send(`La cantidad de visitas es ${++visitas}`)
+})
+app.get('/productos',(req, res) => {
+    res.sendFile(path.resolve(__dirname, './productos.json'))
+})
+app.get('/productoRandom',async (req, res) => {
+    const random = await container.showRandom()
+    res.send(random)
+})
+
 async function consultarDesafio() {
     const newProduct = {
         id: 5,
@@ -99,6 +115,10 @@ async function consultarDesafio() {
 
     console.log(await contenedor.getAll())
 
-    await contenedor.deleteById(5)
+    await contenedor.save(newProduct)
 }
 consultarDesafio() 
+
+const server = app.listen(PORT, () => {
+    console.log(`Corriendo en el servidor ${server.address().port}`);
+})
