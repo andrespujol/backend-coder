@@ -43,23 +43,5 @@
     "pictureUrl": "https://i.ibb.co/qp2R7wn/4.jpg",
     "category": "Pantalón",
     "description": "Pantalón negro"
-  },
-  {
-    "id": 6,
-    "title": "Pantalón",
-    "price": 2500,
-    "stock": 5,
-    "pictureUrl": "https://i.ibb.co/qp2R7wn/4.jpg",
-    "category": "Pantalón",
-    "description": "Pantalón negro"
-  },
-  {
-    "id": 7,
-    "title": "Pantalón",
-    "price": 2500,
-    "stock": 5,
-    "pictureUrl": "https://i.ibb.co/qp2R7wn/4.jpg",
-    "category": "Pantalón",
-    "description": "Pantalón negro"
   }
 ]

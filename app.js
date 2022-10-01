@@ -78,11 +78,22 @@ class Contenedor {
         let array = []
         await this.write(array, "Se eliminaron todos los productos")
     }
+    show() {
+        let products = fs.readFileSync("./" + this.file, 'utf-8')
+        const data = (JSON.parse(products, null, 2))
+        return data
+    }
+    showRandom() {
+        let data = this.show()
+        let random = Math.floor((Math.random() * 5) + 1); 
+        let result = data.filter( producto => producto.id === random)
+        return result
+    }
 
 }
 
 let contenedor = new Contenedor("productos.json")
-
+let visitas = 0
 app.get('/',(req, res) => {
     
     res.send('<h1>Desafío 3</h1>')
@@ -94,7 +105,7 @@ app.get('/productos',(req, res) => {
     res.sendFile(path.resolve(__dirname, './productos.json'))
 })
 app.get('/productoRandom',async (req, res) => {
-    const random = await container.showRandom()
+    const random = await contenedor.showRandom()
     res.send(random)
 })
 
@@ -114,8 +125,6 @@ async function consultarDesafio() {
     console.log(await contenedor.getById(2))
 
     console.log(await contenedor.getAll())
-
-    await contenedor.save(newProduct)
 }
 consultarDesafio() 
 
