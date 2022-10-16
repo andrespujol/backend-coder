@@ -1,0 +1,28 @@
+extends layouts/home.pug
+
+block view
+    unless products.length
+        div(class="alert alert-primary" role="alert")
+            p No se encontraron productos.
+            hr
+            p(class="mb-0")
+                a(class="link mt-3 py-3" href="/")
+                    button(class="btn btn-primary") Ir al formulario
+    else
+        h2(class="h-3") Productos
+        table(class="table")
+            thead
+                tr
+                    th(scope="col") Title
+                    th(scope="col") Price
+                    th(scope="col") Image
+            tbody
+                each p in products
+                    tr
+                        td=p.title
+                        td=`$${p.price}`
+                        td
+                            img(src=p.thumbnail alt=p.title style="height:2.5rem;")
+        a(class="link mt-3 py-3" href="/")
+            button(class="btn btn-primary") Ir al formulario              
+

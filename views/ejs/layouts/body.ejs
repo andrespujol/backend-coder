@@ -1,0 +1,39 @@
+<% if (products.length) { %>
+    <h2 class="h-3">Productos</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% products.forEach(p=> { %>
+                <tr>
+                    <td class="align-middle">
+                        <%= p.title %>
+                    </td>
+                    <td class="align-middle">
+                        $<%= p.price %>
+                    </td>
+                    <td class="align-middle">
+                        <img style="height:2.5rem;" src="<%= p.thumbnail %>" alt="<%= p.title%>" />
+                    </td>
+                </tr>
+                <%}); %>
+        </tbody>
+    </table>
+    <a class="link mt-3 py-3" href="/"><button class="btn btn-primary">Ir al
+            formulario</button></a>
+
+
+    <% }else{ %>
+        <div class="alert alert-primary" role="alert">
+            <p>No se encontraron productos.</p>
+            <hr />
+            <p class="mb-0">
+                <a href="/"><button class="btn btn-primary">Ir al formulario</button></a>
+            </p>
+        </div>
+        <% }%>
